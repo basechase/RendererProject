@@ -1,6 +1,9 @@
 #include "Renderer.h"
+
+
 namespace aie
 {
+   
     void Draw(const Shader& shad, const Geometry& geo)
     {
         // bind the shader program
