@@ -66,8 +66,11 @@ namespace aie
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 
-        glBindVertexArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)16);
+
+        glBindVertexArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, 1);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
         return NewGeo;

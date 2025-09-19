@@ -15,6 +15,7 @@ namespace aie
     struct Vertex
     {
         glm::vec4 Pos;
+        glm::vec4 Color;
     };
 
     struct Geometry
