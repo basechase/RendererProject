@@ -6,7 +6,7 @@
 
 using namespace aie;
 
-    
+    /*
     const char* BasicCameraVert =
         "#version 430 core\n"
         "layout (location = 0) uniform mat4 proj;\n"
@@ -27,6 +27,7 @@ using namespace aie;
         "in vec4 outcolors;\n"
         "void main() { vertColor = outcolors; }";
 
+    */
 
 
 int main()
@@ -49,9 +50,9 @@ int main()
     Geometry basicTriangleGeo = MakeGeometry(triVerts, 3, triIndices, 3);
 
 
-   
+    Shader BasicShadFromFile = LoadShader("res/shad/basicVert.vert", "res/shad/basicFrag.frag");
 
-    Shader basicShad = MakeShader(basicVert, basicFrag);
+    //Shader basicShad = MakeShader(basicVert, basicFrag);
     
    glm::mat4 Camera_Proj = glm::perspective(
    //projetion matrix - transforms view space into clip space(that -1 to +1 zone)
@@ -83,12 +84,12 @@ int main()
         Window.Tick();
         Window.Clear();
         //setup my uniforms
-        SetUniform(basicShad, 0, Camera_Proj);
-        SetUniform(basicShad, 1, Camera_View);
-        SetUniform(basicShad, 2, Triangle_Model);
+        SetUniform(BasicShadFromFile, 0, Camera_Proj);
+       SetUniform(BasicShadFromFile, 1, Camera_View);
+        SetUniform(BasicShadFromFile, 2, Triangle_Model);
 
         
-        Draw(basicShad, basicTriangleGeo);
+        Draw(BasicShadFromFile, basicTriangleGeo);
 
     }
 
