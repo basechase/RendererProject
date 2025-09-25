@@ -1,9 +1,16 @@
 #include "Renderer.h"
-
+#include "Utils.h"
+#include "glm/ext.hpp"
 
 namespace aie
 {
-   
+    void SetUniform(const Shader& shad, GLuint location, const glm::mat4& value)
+    {
+
+        glProgramUniformMatrix4fv(shad.Program, location, 1, GL_FALSE, glm::value_ptr(value));
+
+
+    }
     void Draw(const Shader& shad, const Geometry& geo)
     {
         // bind the shader program
@@ -39,6 +46,9 @@ namespace aie
         // link shaders
         glLinkProgram(newShad.Program);
 
+        assert(CheckShader(newShad));
+
+
         // delete shaders
         glDeleteShader(vert);
         glDeleteShader(frag);
@@ -48,6 +58,13 @@ namespace aie
 
 
         return newShad;
+    }
+    Shader LoadShader(const char* vertPath, const char* fragpath)
+    {
+        std::string VertSource = DumpToString(vertPath);
+        std::string FragSource = DumpToString(fragpath);
+
+        return MakeShader(VertSource.c_str(), FragSource.c_str());
     }
     Geometry MakeGeometry(const Vertex* const Verts, GLsizei VertCount, const GLuint* const Indicies, GLsizei IndexCount)
     {
@@ -86,6 +103,26 @@ namespace aie
         glDeleteVertexArrays(1, &Geo.Vao);
 
         Geo = {};
+    }
+
+    bool CheckShader(Shader& Shad)
+    {
+        GLint status = GL_FALSE;
+        glGetProgramiv(Shad.Program, GL_LINK_STATUS, &status);
+        if (status != GL_TRUE)
+        {
+            GLint logLength = 0;
+            glGetProgramiv(Shad.Program, GL_INFO_LOG_LENGTH, &logLength);
+            GLchar* log = new GLchar[logLength];
+            glGetProgramInfoLog(Shad.Program, logLength, 0, log);
+
+            fprintf(stderr, "%s\n", log);
+
+            delete[] log;
+
+        }
+
+        return status == GL_TRUE;
     }
 
 }
