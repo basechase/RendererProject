@@ -13,21 +13,8 @@ using namespace aie;
         "layout (location = 1) uniform mat4 view;\n"
         "layout (location = 2) uniform mat4 model;";
 
-    
-    const char* basicVert =
-        "#version 430 core\n"
-        "layout (location = 0) in vec4 position;\n"
-        "layout (location = 1) in vec4 colors;\n"
-        "out vec4 outcolors;\n"
-        "void main() {outcolors = colors; gl_Position = position; }";
-
-    const char* basicFrag =
-        "#version 430 core\n"
-        "out vec4 vertColor;\n"
-        "in vec4 outcolors;\n"
-        "void main() { vertColor = outcolors; }";
-
     */
+    
 
 
 int main()
@@ -40,9 +27,9 @@ int main()
     
     Vertex triVerts[] =
     {
-      { { -.5f, -.5f, 0, 1 }, {1,0,1,1} },
-      { { .5f, -.5f, 0, 1 }, {1,0,0,1} },
-      { { 0,  .5f, 0, 1 },  {1,0,1,1 } }
+      { { -.5f, -.5f, 0, 1 } }, // bottom left
+      { { .5f, -.5f, 0, 1 } },  // bottom right
+      { { 0,  .5f, 0, 1 } }     // top middle
     };
 
     unsigned int triIndices[] = { 0, 1, 2 };
@@ -76,7 +63,7 @@ int main()
     glm::mat4 Triangle_Model = glm::identity<glm::mat4>();
 
 
-    //    SetUniform(basicShad, 4, 3.0f);
+     //SetUniform(BasicShadFromFile, 4, 3.0f);
 
     while (!Window.ShouldClose())
     {
