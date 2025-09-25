@@ -42,5 +42,7 @@
   <ItemGroup>
     <None Include="Res\Shader\Basic.frag" />
     <None Include="Res\Shader\Basic.vert" />
+    <None Include="Res\shad\basicCamera.vert" />
+    <None Include="Res\shad\basicCameraFrag.frag" />
   </ItemGroup>
 </Project>

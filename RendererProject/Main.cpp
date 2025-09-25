@@ -6,14 +6,14 @@
 
 using namespace aie;
 
-    /*
+    
     const char* BasicCameraVert =
         "#version 430 core\n"
         "layout (location = 0) uniform mat4 proj;\n"
         "layout (location = 1) uniform mat4 view;\n"
         "layout (location = 2) uniform mat4 model;";
 
-    */
+    
     
 
 
@@ -38,8 +38,10 @@ int main()
 
 
     Shader BasicShadFromFile = LoadShader("res/shad/basicVert.vert", "res/shad/basicFrag.frag");
+    Shader CameraShader = LoadShader("res/shad/basicCamera.vert", "res/shad/basicFrag.frag");
 
     //Shader basicShad = MakeShader(basicVert, basicFrag);
+    glm::mat4 Triangle_Model = glm::identity<glm::mat4>();
     
    glm::mat4 Camera_Proj = glm::perspective(
    //projetion matrix - transforms view space into clip space(that -1 to +1 zone)
@@ -60,7 +62,6 @@ int main()
 
 
     //model matrix - this is the object- will transform object into world space
-    glm::mat4 Triangle_Model = glm::identity<glm::mat4>();
 
 
      //SetUniform(BasicShadFromFile, 4, 3.0f);
@@ -71,15 +72,16 @@ int main()
         Window.Tick();
         Window.Clear();
         //setup my uniforms
-        SetUniform(BasicShadFromFile, 0, Camera_Proj);
-       SetUniform(BasicShadFromFile, 1, Camera_View);
-        SetUniform(BasicShadFromFile, 2, Triangle_Model);
+        SetUniform(CameraShader, 0, Camera_Proj);
+       SetUniform(CameraShader, 1, Camera_View);
+        SetUniform(CameraShader, 2, Triangle_Model);
 
         
-        Draw(BasicShadFromFile, basicTriangleGeo);
+        Draw(CameraShader, basicTriangleGeo);
 
     }
-
+    FreeGeometry(basicTriangleGeo);
+    FreeShader(BasicShadFromFile);
 
 
     Window.Term();
