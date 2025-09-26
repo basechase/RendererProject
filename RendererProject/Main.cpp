@@ -58,7 +58,7 @@ int main()
 
     // view matrix- makes things relative to camera - puts camera at center of the world
    glm::mat4 Camera_View = glm::lookAt
-        (glm::vec3(0, 1, 20),
+        (glm::vec3(0, 5, 20),
         glm::vec3(0, 5, 0),
         glm::vec3(0, 1, 0));
 
@@ -72,7 +72,9 @@ int main()
 
     while (!Window.ShouldClose())
     {
-        
+       
+
+
         Window.Tick();
         Window.Clear();
         //setup my uniforms
@@ -80,7 +82,8 @@ int main()
        SetUniform(TexShad, 1, Camera_View);
         SetUniform(TexShad, 2, Triangle_Model);
         SetUniform(TexShad, 5, Something, 0);
-        
+       
+
         Draw(TexShad, basicTriangleGeo);
 
     }

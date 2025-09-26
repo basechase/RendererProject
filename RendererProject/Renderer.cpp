@@ -132,6 +132,11 @@ namespace aie
         return status == GL_TRUE;
     }
 
+    void SetUniform(const Shader& shad, GLuint location, const glm::vec3& value)
+    {
+        glProgramUniform3fv(shad.Program, location, 1, glm::value_ptr(value));
+    }
+
     Texture MakeTexture(unsigned Width, unsigned Height, unsigned Channels, const unsigned char* Pixels)
     {
         //create reuturn object

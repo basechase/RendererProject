@@ -40,6 +40,12 @@ namespace aie
 
     bool CheckShader(Shader& Shad);
 
+    
+    //will allow assigning vec3 uniforms in shaders
+   
+    void SetUniform(const Shader& shad, GLuint location, const glm::vec3& value);
+
+
     //Creates a texutre in opengl 
     //param width thexture width in poixels
     //param channels numbers of channesl (1-r, 2-rg, 3-rbg, 4 -rgba)
@@ -57,5 +63,5 @@ namespace aie
     //tex the actual texture object
     //texture slot the slot that will be actually assinged to the shader
     void FreeTexture(Texture& tex);
-   
+    
 }
