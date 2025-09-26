@@ -421,3 +421,23 @@ x64/
 *.log
 *.vcpkg_installed/
 
+
+# ignore build artifacts
+Debug/
+Release/
+x64/
+# exception for static libraries using the x64 platform shortname
+![Tt]hirdparty/**/lib/x64/
+
+# ignore Visual Studio (Code) cruft
+.tlog/
+.vs/
+.vscode/
+
+*.vcxproj.user
+
+# ignore common build artifacts
+*.obj
+*.pdb
+*.idb
+*.log
