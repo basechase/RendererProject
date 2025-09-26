@@ -38,7 +38,11 @@ int main()
 
     Shader BasicShadFromFile = LoadShader("res/shad/basicVert.vert", "res/shad/basicFrag.frag");
     Shader CameraShader = LoadShader("res/shad/basicCamera.vert", "res/shad/basicFrag.frag");
-    Shader TexShad = LoadShader("res/shad/basicCamera.vert", "res/shad/Text.frag");
+    Shader TexShad = LoadShader("res/shad/basicCamera.vert", "res/shad/Tex.frag");
+    
+
+    Texture Something = LoadTexture("img/terry.png");
+    
     
     //Shader basicShad = MakeShader(basicVert, basicFrag);
     glm::mat4 Triangle_Model = glm::identity<glm::mat4>();
@@ -75,7 +79,7 @@ int main()
         SetUniform(TexShad, 0, Camera_Proj);
        SetUniform(TexShad, 1, Camera_View);
         SetUniform(TexShad, 2, Triangle_Model);
-        
+        SetUniform(TexShad, 5, Something, 0);
         
         Draw(TexShad, basicTriangleGeo);
 
