@@ -1,7 +1,6 @@
 #include "Context.h"
 #include "Renderer.h"
-#include <glm/ext/matrix_transform.hpp>
-#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext.hpp>
 #include <GLFW/glfw3.h>
 
 using namespace aie;
@@ -27,9 +26,9 @@ int main()
     
     Vertex triVerts[] =
     {
-      { { -.5f, -.5f, 0, 1 } }, // bottom left
-      { { .5f, -.5f, 0, 1 } },  // bottom right
-      { { 0,  .5f, 0, 1 } }     // top middle
+      { { -.5f, -.5f, 0, 1  }, {0.0f, 0.0f} },               // bottom left
+      { { .5f, -.5f, 0, 1  },  {1.0f, 0.0f}} ,             // bottom right
+      { { 0,  .5f, 0, 1 } ,     { 0.5f, 1.0f } },               // top middle
     };
 
     unsigned int triIndices[] = { 0, 1, 2 };
@@ -39,7 +38,8 @@ int main()
 
     Shader BasicShadFromFile = LoadShader("res/shad/basicVert.vert", "res/shad/basicFrag.frag");
     Shader CameraShader = LoadShader("res/shad/basicCamera.vert", "res/shad/basicFrag.frag");
-
+    Shader TexShad = LoadShader("res/shad/basicCamera.vert", "res/shad/Text.frag");
+    
     //Shader basicShad = MakeShader(basicVert, basicFrag);
     glm::mat4 Triangle_Model = glm::identity<glm::mat4>();
     
@@ -72,12 +72,12 @@ int main()
         Window.Tick();
         Window.Clear();
         //setup my uniforms
-        SetUniform(CameraShader, 0, Camera_Proj);
-       SetUniform(CameraShader, 1, Camera_View);
-        SetUniform(CameraShader, 2, Triangle_Model);
-
+        SetUniform(TexShad, 0, Camera_Proj);
+       SetUniform(TexShad, 1, Camera_View);
+        SetUniform(TexShad, 2, Triangle_Model);
         
-        Draw(CameraShader, basicTriangleGeo);
+        
+        Draw(TexShad, basicTriangleGeo);
 
     }
     FreeGeometry(basicTriangleGeo);

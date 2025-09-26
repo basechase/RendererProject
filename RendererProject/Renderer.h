@@ -14,7 +14,7 @@ namespace aie
     struct Vertex
     {
         glm::vec4 Pos;
-        glm::vec4 Color;
+        glm::vec2 UVs;
     };
 
     struct Geometry
@@ -22,6 +22,13 @@ namespace aie
         GLuint Vao = 0, Vbo = 0, Ibo = 0;
         GLuint Size = 0;
     };
+
+    struct Texture 
+    {
+        GLuint Handle; // oppen gl texture name
+        unsigned Width, Height, Channels;
+    };
+
 
     void SetUniform(const Shader& shad, GLuint location, const glm::mat4& value);
     void Draw(const Shader& shad, const Geometry& geo);
@@ -33,5 +40,22 @@ namespace aie
 
     bool CheckShader(Shader& Shad);
 
+    //Creates a texutre in opengl 
+    //param width thexture width in poixels
+    //param channels numbers of channesl (1-r, 2-rg, 3-rbg, 4 -rgba)
+    //param pixels pointer to pixel buffer
+    //return the texture
+    Texture MakeTexture(unsigned Width, unsigned Height, unsigned Channels, const unsigned char* Pixels);
+    //frees a texture in opemg;
+    //param Tex The texture (to be 0 afrer freed
+    Texture LoadTexture(const char* ImagePath);
+
+    void SetUniform(const Shader& Shad, GLuint Location, const Texture& Tex, int TextureSlot);
+    // assign a texture to a texture slot then assign that slot number as the unform value
+    //shad the shader
+    //locatiomn th loc should match whats given in shader source code
+    //tex the actual texture object
+    //texture slot the slot that will be actually assinged to the shader
+    void FreeTexture(Texture& tex);
    
 }
