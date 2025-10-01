@@ -79,9 +79,10 @@ int main()
         Window.Clear();
         //setup my uniforms
         SetUniform(TexShad, 0, Camera_Proj);
-       SetUniform(TexShad, 1, Camera_View);
+        SetUniform(TexShad, 1, Camera_View);
         SetUniform(TexShad, 2, Triangle_Model);
         SetUniform(TexShad, 5, Something, 0);
+        SetUniform(TexShad, 3, glfwGetTime());
        
 
         Draw(TexShad, basicTriangleGeo);

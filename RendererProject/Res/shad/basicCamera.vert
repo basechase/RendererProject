@@ -10,7 +10,7 @@ layout (location = 1) uniform mat4 view;
 layout (location = 2) uniform mat4 model;
 
 layout (location = 3) uniform float time;
-//layout (location = 4) uniform float displacement = 5;
+layout (location = 4) uniform float displacement = 5;
 
 
 
@@ -24,7 +24,7 @@ void main()
 
 	// VERTEX SHADER LOGIC POSITION
 	vec4 myPosition = position;
-	//myPosition.y += sin(time) * displacement;
+	myPosition.y += sin(time) * displacement;
 
 	// transform object from ...
 	// - OBJECT to WORLD  (model)

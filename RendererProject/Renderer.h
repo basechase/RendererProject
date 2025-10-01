@@ -39,11 +39,12 @@ namespace aie
     void FreeGeometry(Geometry& Geo);
 
     bool CheckShader(Shader& Shad);
-
+    
     
     //will allow assigning vec3 uniforms in shaders
    
     void SetUniform(const Shader& shad, GLuint location, const glm::vec3& value);
+    void SetUniform(const Shader& shad, GLuint location, const float& value);
 
 
     //Creates a texutre in opengl 
