@@ -2,6 +2,9 @@
 #include "Utils.h"
 #include "glm/ext.hpp"
 #define STB_IMAGE_IMPLEMENTATION 1
+#define TINYOBJLOADER_IMPLEMENTAION 1
+#include "tiny_obj_loader.h"
+#include <vector>
 #include <stb_image.h>
 
 namespace aie
