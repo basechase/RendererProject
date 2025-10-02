@@ -419,7 +419,7 @@ x64/
 *.pdb
 *.idb
 *.log
-*.vcpkg_installed/
+*vcpkg_installed/
 
 
 # ignore build artifacts
