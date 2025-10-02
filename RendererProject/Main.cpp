@@ -20,7 +20,6 @@ int main()
 {
     
     
-
     Context Window;
     Window.Init(640, 480, "Hello Window");
     
@@ -69,7 +68,8 @@ int main()
 
 
      //SetUniform(BasicShadFromFile, 4, 3.0f);
-
+    glm::vec3 ambient(1.f, 1.5f, 1.5f);
+    glm::vec3 sunDirection(0, 0, 1);
     while (!Window.ShouldClose())
     {
        
@@ -83,6 +83,10 @@ int main()
         SetUniform(TexShad, 2, Triangle_Model);
         SetUniform(TexShad, 5, Something, 0);
         SetUniform(TexShad, 3, glfwGetTime());
+        
+       
+        SetUniform(TexShad, 7, sunDirection);
+        SetUniform(TexShad, 6, ambient);
        
 
         Draw(TexShad, basicTriangleGeo);
