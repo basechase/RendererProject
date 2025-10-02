@@ -6,25 +6,19 @@
 using namespace aie;
 
     
-    const char* BasicCameraVert =
-        "#version 430 core\n"
-        "layout (location = 0) uniform mat4 proj;\n"
-        "layout (location = 1) uniform mat4 view;\n"
-        "layout (location = 2) uniform mat4 model;";
 
-    
     
 
 
 int main()
 {
     
-    
+    glm::mat4 turn90degrees = glm::rotate(90.0f, glm::vec3(0, 1, 0));
     Context Window;
     Window.Init(640, 480, "Hello Window");
   
 
-    unsigned int triIndices[] = { 0, 1, 2 };
+   
 
     Geometry Spear = LoadGeometry("assets/obj/soulspear.obj");
 
@@ -55,19 +49,19 @@ int main()
         glm::vec3(0, 5, 0),
         glm::vec3(0, 1, 0));
 
-
+    
 
 
     //model matrix - this is the object- will transform object into world space
 
 
      //SetUniform(BasicShadFromFile, 4, 3.0f);
-    glm::vec3 ambient(1.f, 1.5f, 1.5f);
+    glm::vec3 ambient(0.5f, 0.5f, 0.5f);
     glm::vec3 sunDirection(0, 0, 1);
     while (!Window.ShouldClose())
     {
        
-
+        
 
         Window.Tick();
         Window.Clear();

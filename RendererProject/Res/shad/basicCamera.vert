@@ -33,7 +33,7 @@ void main()
 	// VERTEX SHADER LOGIC POSITION
 	vec4 myPosition = position;
 	myPosition.y += sin(time) * displacement;
-
+	//myPosition.z += sin(time) * displacement;
 	// transform object from ...
 	// - OBJECT to WORLD  (model)
 	// - WORLD  to CAMERA (view)
