@@ -2,8 +2,8 @@
 
 // Vertex Attributes
 layout (location = 0) in vec4 position;
-layout (location = 1) in vec2 uv;
-layout (location = 2) in vec4 normal;
+layout (location = 1) in vec4 normal;
+layout (location = 2) in vec2 uv;
 
 
 // Uniforms
@@ -28,11 +28,11 @@ void main()
 	vPos = position;
 	vNormal = mat3(transpose(inverse(model))) * normal.xyz;
 	vertUV = uv;
-	vertUV.x += sin(time);
+	//vertUV.x += sin(time);
 
 	// VERTEX SHADER LOGIC POSITION
 	vec4 myPosition = position;
-	myPosition.y += sin(time) * displacement;
+	//myPosition.y += sin(time) * displacement;
 	//myPosition.z += sin(time) * displacement;
 	// transform object from ...
 	// - OBJECT to WORLD  (model)

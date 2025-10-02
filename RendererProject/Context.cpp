@@ -14,7 +14,7 @@ void APIENTRY errorCallback(GLenum source, GLenum type, GLuint id, GLenum severi
 bool aie::Context::Init(int Width, int Height, const char* Title)
 {
     glfwInit();
-    Window = glfwCreateWindow(640, 480, "Hello Window", nullptr, nullptr);
+    Window = glfwCreateWindow(Width, Height, "Hello Window", nullptr, nullptr);
     glfwMakeContextCurrent(Window);
 
     glewInit();

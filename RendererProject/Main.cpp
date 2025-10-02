@@ -28,7 +28,7 @@ int main()
     Shader TexShad = LoadShader("res/shad/basicCamera.vert", "res/shad/Tex.frag");
     
 
-    Texture Something = LoadTexture("img/terry.png");
+    Texture Something = LoadTexture("img/soulspear_diffuse.tga");
     
     
     //Shader basicShad = MakeShader(basicVert, basicFrag);
@@ -45,8 +45,8 @@ int main()
 
     // view matrix- makes things relative to camera - puts camera at center of the world
    glm::mat4 Camera_View = glm::lookAt
-        (glm::vec3(0, 5, 20),
-        glm::vec3(0, 5, 0),
+        (glm::vec3(0, 0, 6),
+        glm::vec3(0, 1, 0),
         glm::vec3(0, 1, 0));
 
     
@@ -56,7 +56,7 @@ int main()
 
 
      //SetUniform(BasicShadFromFile, 4, 3.0f);
-    glm::vec3 ambient(0.5f, 0.5f, 0.5f);
+    glm::vec3 ambient(1.f, 1.f, 1.f);
     glm::vec3 sunDirection(0, 0, 1);
     while (!Window.ShouldClose())
     {
