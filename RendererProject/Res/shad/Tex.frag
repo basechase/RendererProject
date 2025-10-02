@@ -4,7 +4,7 @@
 layout (location = 5) uniform sampler2D albedo;
 layout (location = 6) uniform vec3 ambientLightColor;
 layout (location = 7) uniform vec3 lightDir;
-layout (location = 8) uniform vec3 lightColor;
+layout (location = 8) uniform vec3 lightColor = vec3(1,0,0);
 
 in vec4 vPos;
 in vec2 vertUV;
