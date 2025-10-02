@@ -22,17 +22,11 @@ int main()
     
     Context Window;
     Window.Init(640, 480, "Hello Window");
-    
-    Vertex triVerts[] =
-    {
-      { { -.5f, -.5f, 0, 1  }, {0.0f, 0.0f} },               // bottom left
-      { { .5f, -.5f, 0, 1  },  {1.0f, 0.0f}} ,             // bottom right
-      { { 0,  .5f, 0, 1 } ,     { 0.5f, 1.0f } },               // top middle
-    };
+  
 
     unsigned int triIndices[] = { 0, 1, 2 };
 
-    Geometry basicTriangleGeo = MakeGeometry(triVerts, 3, triIndices, 3);
+    Geometry Spear = LoadGeometry("assets/obj/soulspear.obj");
 
 
     Shader BasicShadFromFile = LoadShader("res/shad/basicVert.vert", "res/shad/basicFrag.frag");
@@ -89,10 +83,10 @@ int main()
         SetUniform(TexShad, 6, ambient);
        
 
-        Draw(TexShad, basicTriangleGeo);
+        Draw(TexShad, Spear);
 
     }
-    FreeGeometry(basicTriangleGeo);
+    FreeGeometry(Spear);
     FreeShader(BasicShadFromFile);
 
 

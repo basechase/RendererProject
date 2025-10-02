@@ -14,7 +14,9 @@ namespace aie
     struct Vertex
     {
         glm::vec4 Pos;
+        glm::vec4 Normals;
         glm::vec2 UVs;
+
     };
 
     struct Geometry
@@ -64,5 +66,7 @@ namespace aie
     //tex the actual texture object
     //texture slot the slot that will be actually assinged to the shader
     void FreeTexture(Texture& tex);
+
+    Geometry LoadGeometry(const char* filePath);
     
 }
